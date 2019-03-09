@@ -7,3 +7,53 @@ exports[`App: bails out for non-english languages 1`] = `
   localeName="German"
 />
 `;
+
+exports[`App: filters out non-text fields 1`] = `
+<div
+  className="language-checker"
+  entry={
+    Object {
+      "sys": Object {
+        "id": "ABC",
+      },
+    }
+  }
+  fieldsToCheck={
+    Array [
+      Object {
+        "id": "123",
+        "type": "Symbol",
+      },
+      Object {
+        "id": "789",
+        "type": "Text",
+      },
+      Object {
+        "id": "012",
+        "type": "RichText",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`App: works for English languages 1`] = `
+<div
+  className="language-checker"
+  entry={
+    Object {
+      "sys": Object {
+        "id": "ABC",
+      },
+    }
+  }
+  fieldsToCheck={
+    Array [
+      Object {
+        "id": "123",
+        "type": "Symbol",
+      },
+    ]
+  }
+/>
+`;
