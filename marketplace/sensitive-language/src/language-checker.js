@@ -15,6 +15,14 @@ import alex from 'alex';
 import {NoIssues} from './no-issues.js';
 import {Message} from './message.js';
 
+function checkContent(isRichText, value) {
+  const {messages} = isRichText
+    ? alex.text(documentToPlainTextString(value))
+    : alex.markdown(value);
+
+  return messages;
+}
+
 export class LanguageChecker extends React.Component {
   constructor () {
     super();
@@ -31,9 +39,7 @@ export class LanguageChecker extends React.Component {
       const isRichText = fieldDefinition.type === 'RichText';
 
       if (currentValue) {
-        const {messages} = isRichText
-          ? alex.text(documentToPlainTextString(currentValue))
-          : alex.markdown(currentValue);
+        const messages = checkContent(isRichText, currentValue);
 
         this.setState((state) => {
           const messageMap = state.messageMap;
@@ -45,9 +51,7 @@ export class LanguageChecker extends React.Component {
       }
 
       field.onValueChanged(value => {
-        const {messages} = isRichText
-          ? alex.text(documentToPlainTextString(value))
-          : alex.markdown(value);
+        const messages = checkContent(isRichText, value);
 
         this.setState((state) => {
           const messageMap = state.messageMap;
