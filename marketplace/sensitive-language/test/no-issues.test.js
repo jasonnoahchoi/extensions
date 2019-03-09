@@ -3,13 +3,7 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
 
-function mockComponent (componentClassName) {
-  return ((props) => {
-    const className = props.className ? `${componentClassName} ${props.className}` : componentClassName;
-
-    return (<div className={className} {...props}>{props.children}</div>)
-  });
-}
+const {mockComponent} = require('./mock-component.js');
 
 jest.mock('@contentful/forma-36-react-components', () => ({
   Icon: mockComponent('icon'),
