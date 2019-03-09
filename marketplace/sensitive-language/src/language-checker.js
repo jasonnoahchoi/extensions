@@ -13,6 +13,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import alex from 'alex';
 
 import {NoIssues} from './no-issues.js';
+import {Message} from './message.js';
 
 export class LanguageChecker extends React.Component {
   constructor () {
@@ -101,24 +102,7 @@ export class LanguageChecker extends React.Component {
               </SectionHeading>
 
               <ul className='warning-list f36-margin-bottom--m'>
-                {messages.map((message, index) => {
-                  return (
-                    <li className='warning-list__item' key={index}>
-                      <Icon
-                        icon='Close'
-                        color='negative'
-                        extraClassNames='f36-margin-right--2xs'
-                      />
-                      <Paragraph
-                        title={`Flagged by rule ID "${message.ruleId}". ${
-                          message.note ? message.note : ""
-                          }`}
-                      >
-                        {message.message}
-                      </Paragraph>
-                    </li>
-                  );
-                })}
+                {messages.map((message, index) => <Message message={message} key={index}/>)}
               </ul>
             </div>
           );
