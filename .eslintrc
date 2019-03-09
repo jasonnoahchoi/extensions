@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:promise/recommended"
+  ],
+  "plugins": [
+    "promise"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "settings": {
+    "react": {
+      "version": "16.8"
+    }
+  }
+}

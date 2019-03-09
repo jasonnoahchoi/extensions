@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "acorn": "^6.1.1",
+    "acorn-jsx": "^5.0.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.15.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "espree": "^5.0.1",
+    "jest": "^24.3.1",
+    "log-symbols": "^2.2.0",
+    "make-dir": "^2.1.0",
+    "netlify": "^2.4.1",
+    "ora": "^3.2.0",
+    "parcel-bundler": "^1.12.0",
+    "react-test-renderer": "^16.8.4"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "deploy": "node ./scripts/deploy.js",
+    "lint": "eslint marketplace/**/*.js scripts/**/*.js",
+    "test": "jest marketplace/**/test/*.js"
+  },
+  "engines": {
+    "node": ">=10.15.0"
+  },
+  "dependencies": {
+    "@contentful/forma-36-fcss": "0.0.13",
+    "@contentful/forma-36-react-components": "^2.9.8",
+    "@contentful/rich-text-plain-text-renderer": "^13.1.0",
+    "alex": "^7.1.0",
+    "contentful-ui-extensions-sdk": "^3.6.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
