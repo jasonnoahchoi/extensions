@@ -27,7 +27,8 @@
     "build": "node ./scripts/build.js",
     "deploy": "node ./scripts/deploy.js",
     "lint": "eslint marketplace/**/*.js scripts/**/*.js",
-    "test": "jest marketplace/**/test/*.test.js"
+    "test": "jest marketplace/**/test/*.test.js",
+    "coverage": "jest --coverage marketplace/**/test/*.test.js"
   },
   "engines": {
     "node": ">=10.15.0"
@@ -40,5 +41,11 @@
     "contentful-ui-extensions-sdk": "^3.6.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "marketplace/**/src/**/*.js"
+    ],
+    "testEnvironment": "node"
   }
 }
