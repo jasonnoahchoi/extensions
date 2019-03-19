@@ -8,6 +8,8 @@
     "acorn": "^6.1.1",
     "acorn-jsx": "^5.0.1",
     "babel-preset-react": "^6.24.1",
+    "commander": "^2.19.0",
+    "contentful-cli": "^0.24.0",
     "eslint": "^5.15.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.3.0",
@@ -20,11 +22,12 @@
     "make-dir": "^2.1.0",
     "netlify": "^2.4.1",
     "ora": "^3.2.0",
-    "parcel-bundler": "^1.12.0",
+    "parcel-bundler": "^1.12.2",
     "react-test-renderer": "^16.8.4"
   },
   "scripts": {
-    "build": "node ./scripts/build.js",
+    "build": "NODE_ENV=production node ./scripts/build.js",
+    "start": "contentful space use && NODE_ENV=development node ./scripts/start.js",
     "deploy": "node ./scripts/deploy.js",
     "lint": "eslint marketplace/**/*.js scripts/**/*.js",
     "test": "jest marketplace/**/test/*.test.js",

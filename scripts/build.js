@@ -27,7 +27,7 @@ async function writeExtensionManifest (extensionDir, manifest) {
 const BASE_PARCEL_OPTIONS = {
   outFile: 'extension.html',
   target: 'browser',
-  publicUrl: './',
+  publicUrl: '/',
   watch: false,
   minify: true,
   scopeHoist: true,
@@ -57,7 +57,6 @@ dirs(`${__dirname}/../marketplace`)
       const newManifest = Object.assign({}, extension.manifest);
 
       delete newManifest.majorVersion;
-      delete newManifest.srcdoc;
 
       newManifest.src = `https://${extensionDir}.contentfulexts.com/extension.html`;
 

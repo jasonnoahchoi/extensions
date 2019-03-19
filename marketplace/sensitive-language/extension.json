@@ -1,7 +1,6 @@
 {
   "id": "sensitive-language",
   "name": "Sensitive Language",
-  "srcdoc": "./src/index.html",
   "majorVersion": 1,
   "sidebar": true,
   "parameters": {
