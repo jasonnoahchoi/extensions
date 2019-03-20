@@ -2,7 +2,5 @@
   "id": "bynder-dialog",
   "name": "bynder-dialog",
   "srcdoc": "./build/index.html",
-  "fieldTypes": [
-    "Symbols"
-  ]
+  "fieldTypes": ["Object"]
 }
