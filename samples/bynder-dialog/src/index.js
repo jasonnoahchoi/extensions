@@ -39,8 +39,8 @@ function Field({ sdk }) {
     const assets = await sdk.dialogs
       .openExtension({
         id: extension.id,
-        width: 1000,
-        title: 'Select images in Bynder',
+        width: 900,
+        title: 'Select images from contentful.getbynder.com',
         shouldCloseOnEscapePress: true,
       })
       .then(assets => {

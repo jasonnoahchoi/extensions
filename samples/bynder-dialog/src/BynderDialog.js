@@ -20,8 +20,9 @@ export default class Dialog extends React.Component {
 
   loadBynderScript = () => {
     const script = document.createElement('script');
+    //TODO: swap once forms are allowed in UIEs iframes 'https://d8ejoa1fys2rk.cloudfront.net/modules/compactview/includes/js/client-1.4.0.min.js';
     script.src =
-      'https://d8ejoa1fys2rk.cloudfront.net/modules/compactview/includes/js/client-1.4.0.min.js';
+      'https://d8ejoa1fys2rk.cloudfront.net/modules/compactview/includes/js/client-1.1.0.min.js';
     script.async = true;
 
     document.body.appendChild(script);
