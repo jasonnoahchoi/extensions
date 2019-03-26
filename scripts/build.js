@@ -1,9 +1,9 @@
 'use strict';
 
-const Bundler = require('parcel-bundler');
-const {readFile, writeFile} = require('fs').promises;
+const {readFile, writeFile, rename} = require('fs').promises;
 const path = require('path');
 const makeDir = require('make-dir');
+const cpy = require('cpy');
 
 const {dirs} = require('./utils.js');
 
@@ -24,16 +24,6 @@ async function writeExtensionManifest (extensionDir, manifest) {
     .then(() => writeFile(filePath, JSON.stringify(manifest), 'utf8'));
 }
 
-const BASE_PARCEL_OPTIONS = {
-  outFile: 'extension.html',
-  target: 'browser',
-  publicUrl: '/',
-  watch: false,
-  minify: true,
-  scopeHoist: true,
-  sourceMaps: false
-};
-
 dirs(`${__dirname}/../marketplace`)
   .then(extensions => {
     return Promise.all(extensions.map(async extension => {
@@ -50,9 +40,6 @@ dirs(`${__dirname}/../marketplace`)
   .then(extensions => {
     return Promise.all(extensions.map(extension => {
       const extensionDir = `${extension.name}-${extension.manifest.majorVersion}`;
-      const bundler = new Bundler(extension.entryFile, Object.assign({
-        outDir: path.join(BUILD_DIR, extensionDir)
-      }, BASE_PARCEL_OPTIONS));
 
       const newManifest = Object.assign({}, extension.manifest);
 
@@ -60,10 +47,12 @@ dirs(`${__dirname}/../marketplace`)
 
       newManifest.src = `https://${extensionDir}.contentfulexts.com/extension.html`;
 
-      return Promise.all([
-        writeExtensionManifest(extensionDir, newManifest),
-        bundler.bundle()
-      ]);
+      return cpy(path.join(BASE_DIR, extension.name, 'build'), path.join(BUILD_DIR, extensionDir))
+        .then(() => writeExtensionManifest(extensionDir, newManifest))
+        .then(() => rename(
+          path.join(BUILD_DIR, extensionDir, 'index.html'),
+          path.join(BUILD_DIR, extensionDir, 'extension.html')
+        ));
     }));
   })
   .catch(err => console.error(err));

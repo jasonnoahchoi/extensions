@@ -7,6 +7,10 @@ import { init } from 'contentful-ui-extensions-sdk';
 
 import {App} from './app.js';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 init(extension => {
   const root = document.getElementById('root');
 
