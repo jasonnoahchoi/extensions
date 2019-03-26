@@ -6,3 +6,4 @@ npm-debug.log
 samples/.vscode/settings.json
 .idea/
 coverage/
+.contentfulrc.json

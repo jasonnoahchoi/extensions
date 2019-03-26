@@ -19,7 +19,7 @@ function createOrUpdate (extensionName) {
   return client.getSite({site_id: customDomain})
     .then(
       site => {
-        console.log('Updating existing site', siteName);
+        console.log('\nUpdating existing site', siteName);
         return site;
       },
       err => {
