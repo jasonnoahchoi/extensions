@@ -14,12 +14,6 @@ const TIMELINE_DIMENSIONS = [
 const CLIENT_ID = '318721834234-s3td95ohvub1bkksn3aicimnltvmtts8.apps.googleusercontent.com';
 
 class App extends React.Component {
-  static propTypes = {
-    auth: PropTypes.object.isRequired,
-    parameters: PropTypes.object.isRequired,
-    entry: PropTypes.object.isRequired,
-  };
-
   constructor(props) {
     super(props);
     const {auth, parameters, entry} = props;
@@ -100,7 +94,7 @@ class App extends React.Component {
         <div className="dimensions">
           {TIMELINE_DIMENSIONS.map(dimension => {
               const isActive = dimension.value === this.state.dimension;
-              return (<label className={isActive ? 'is-active' : ''}>
+              return (<label key={dimension.value} className={isActive ? 'is-active' : ''}>
                 {dimension.label}
                 <input
                   type="radio"
@@ -116,7 +110,7 @@ class App extends React.Component {
           pagePath={pagePath}
           range={range}
           dimension={dimension}
-          parameters={parameters}
+          viewId={parameters.viewId}
         />
         <div className="info">
           <svg
@@ -144,5 +138,11 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  auth: PropTypes.object.isRequired,
+  parameters: PropTypes.object.isRequired,
+  entry: PropTypes.object.isRequired,
+};
 
 export {App};

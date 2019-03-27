@@ -1,4 +1,7 @@
+/* global gapi */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {formatDate} from './utils.js';
 
@@ -25,8 +28,7 @@ class Timeline extends React.Component {
     });
   }
   render() {
-    const { range, dimension, pagePath } = this.props;
-    const { viewId } = this.props.parameters;
+    const { range, dimension, pagePath, viewId } = this.props;
     if (this.state.timeline) {
       this.state.timeline
         .set({
@@ -47,5 +49,15 @@ class Timeline extends React.Component {
     return (<div ref={c => (this.timeline = c)} />);
   }
 }
+
+Timeline.propTypes = {
+  viewId: PropTypes.string.isRequired,
+  dimension: PropTypes.string.isRequired,
+  pagePath: PropTypes.string.isRequired,
+  range: PropTypes.shape({
+    start: PropTypes.instanceOf(Date).isRequired,
+    end: PropTypes.instanceOf(Date).isRequired,
+  }).isRequired
+};
 
 export {Timeline};

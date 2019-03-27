@@ -2,6 +2,9 @@
   "env": {
     "browser": true
   },
+  "globals": {
+    "module": "readonly"
+  },
   "extends": [
     "../.eslintrc",
     "plugin:react/recommended"

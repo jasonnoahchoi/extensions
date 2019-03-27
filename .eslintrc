@@ -7,11 +7,7 @@
     "promise"
   ],
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2019
   },
-  "settings": {
-    "react": {
-      "version": "16.8"
-    }
-  }
+  "root": true
 }
