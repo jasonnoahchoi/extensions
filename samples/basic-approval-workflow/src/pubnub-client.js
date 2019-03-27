@@ -25,7 +25,7 @@ export default async function createPubNubClient({
 
     if (validEntry && validTimetoken && newEntry) {
       // Timetoken is a 17-digit precision unix time (UTC)
-      const t = parseInt(timetoken, 10) / 10000;
+      const t = parseInt(timetoken.slice(0, timetoken.length - 4), 10);
       const item = { ...entry, t };
       state.log = state.log.concat([item]);
       state.log.sort((a, b) => b.t - a.t);
@@ -34,36 +34,13 @@ export default async function createPubNubClient({
     return false;
   }
 
-  function getHistory() {
-    return new Promise((resolve, reject) => {
-      pubnub.history({
-        channel,
-        count: 25,
-        stringifiedTimeToken: true,
-      }, (status, res) => {
-        if (status && status.error) {
-          reject(new Error('Failed to get channel history.'));
-        } else {
-          resolve(res);
-        }
-      });
-    });
-  }
-
-  function publish(message) {
-    return new Promise((resolve, reject) => {
-      pubnub.publish({ channel, message }, (status, res) => {
-        if (status && status.error) {
-          reject(new Error('Failed to publish a message.'));
-        } else {
-          resolve(res);
-        }
-      });
-    });
-  }
-
   // Prepopulate the log with history.
-  const { messages } = await getHistory();
+  const { messages } = await pubnub.history({
+    channel,
+    count: 25,
+    stringifiedTimeToken: true,
+  });
+
   messages.forEach(addToLog);
 
   // Add more messages as they come.
@@ -79,7 +56,7 @@ export default async function createPubNubClient({
 
   return {
     log: state.log,
-    publish,
+    publish: message => pubnub.publish({ channel, message }),
     disconnect: () => pubnub.unsubscribe({ channels: [channel] }),
   };
 }

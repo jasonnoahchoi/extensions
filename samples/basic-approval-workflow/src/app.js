@@ -107,8 +107,6 @@ export default class App extends React.Component {
     const reviewer = findUserById(users, item.reviewerId);
 
     const isRequester = sdk.user.sys.id === requester.sys.id;
-    const isReviewer = sdk.user.sys.id === reviewer.sys.id;
-
     if (isRequester) {
       return (
         <React.Fragment>
@@ -127,7 +125,10 @@ export default class App extends React.Component {
           </Button>
         </React.Fragment>
       );
-    } if (isReviewer) {
+    }
+
+    const isReviewer = sdk.user.sys.id === reviewer.sys.id;
+    if (isReviewer) {
       return (
         <React.Fragment>
           <Paragraph>
@@ -139,6 +140,7 @@ export default class App extends React.Component {
         </React.Fragment>
       );
     }
+
     return (
       <Note>
         {userName(requester)}
@@ -173,7 +175,7 @@ export default class App extends React.Component {
           <Note>
             {'The entry was modified since the last approval by '}
             <strong>{userName(reviewer)}</strong>
-            {'. Request review again.'}
+            {'. This needs to be reviewed again.'}
           </Note>
           <Vspace />
           {this.renderRequestButton()}
