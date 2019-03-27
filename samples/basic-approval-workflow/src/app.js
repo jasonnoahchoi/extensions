@@ -59,7 +59,7 @@ export default class App extends React.Component {
     const { log, users } = this.props;
     const { currentVersion, busy } = this.state;
 
-    const last = log[0];
+    const [last] = log;
     const eventType = last && last.eventType;
     const isApproved = eventType === eventTypes.APPROVED;
     const canPublish = isApproved && last.version === currentVersion;
@@ -237,7 +237,7 @@ export default class App extends React.Component {
       version: currentVersion,
     };
 
-    // Send a message for real-time sync and persistance
+    // Send a message for real-time sync and persistence
     pubnub.publish(item);
 
     // Update local state for instant changes
