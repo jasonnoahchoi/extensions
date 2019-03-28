@@ -20,7 +20,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build -- -- --no-inline && node ./scripts/build.js",
     "deploy": "node ./scripts/deploy.js",
-    "lint": "eslint marketplace/**/*.js scripts/**/*.js",
+    "lint": "eslint marketplace/**/*.js scripts/**/*.js --ignore-path .gitignore",
     "test": "lerna run test",
     "coverage": "lerna run coverage"
   },
