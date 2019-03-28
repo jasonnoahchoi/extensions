@@ -16,11 +16,11 @@ export class App extends React.Component {
 
     const defaultLocale = extension.locales.default;
     if (!defaultLocale.startsWith('en-')) {
-      return <UnsupportedLanguage localeCode={defaultLocale} localeName={extension.locales.names[defaultLocale]} />
+      return <UnsupportedLanguage localeCode={defaultLocale} localeName={extension.locales.names[defaultLocale]} />;
     }
 
     const textFields = extension.contentType.fields.filter(({type}) => textFieldTypes.includes(type));
-    return (<LanguageChecker entry={extension.entry} fieldsToCheck={textFields} />);
+    return <LanguageChecker entry={extension.entry} fieldsToCheck={textFields} />;
   }
 }
 

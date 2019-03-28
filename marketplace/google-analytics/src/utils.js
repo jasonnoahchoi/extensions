@@ -1,4 +1,4 @@
-function formatDate (date) {
+function formatDate(date) {
   return date.toISOString().slice(0, 10);
 }
 

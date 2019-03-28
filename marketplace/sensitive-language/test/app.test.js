@@ -14,7 +14,7 @@ jest.mock('../src/language-checker.js', () => ({
 
 const {App} = require('../src/app.js');
 
-test('App: bails out for non-english languages', function () {
+test('App: bails out for non-english languages', function() {
   const extension = {
     locales: {
       default: 'de-DE',
@@ -27,13 +27,11 @@ test('App: bails out for non-english languages', function () {
     }
   };
 
-  const tree = renderer
-    .create(<App extension={extension} />)
-    .toJSON();
+  const tree = renderer.create(<App extension={extension} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('App: works for English languages', function () {
+test('App: works for English languages', function() {
   const extension = {
     locales: {
       default: 'en-US',
@@ -59,13 +57,11 @@ test('App: works for English languages', function () {
     }
   };
 
-  const tree = renderer
-    .create(<App extension={extension} />)
-    .toJSON();
+  const tree = renderer.create(<App extension={extension} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('App: filters out non-text fields', function () {
+test('App: filters out non-text fields', function() {
   const extension = {
     locales: {
       default: 'en-US',
@@ -107,8 +103,6 @@ test('App: filters out non-text fields', function () {
     }
   };
 
-  const tree = renderer
-    .create(<App extension={extension} />)
-    .toJSON();
+  const tree = renderer.create(<App extension={extension} />).toJSON();
   expect(tree).toMatchSnapshot();
 });

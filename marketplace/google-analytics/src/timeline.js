@@ -28,7 +28,7 @@ class Timeline extends React.Component {
     });
   }
   render() {
-    const { range, dimension, pagePath, viewId } = this.props;
+    const {range, dimension, pagePath, viewId} = this.props;
     if (this.state.timeline) {
       this.state.timeline
         .set({
@@ -46,7 +46,7 @@ class Timeline extends React.Component {
         .execute();
     }
 
-    return (<div ref={c => (this.timeline = c)} />);
+    return <div ref={c => (this.timeline = c)} />;
   }
 }
 
@@ -56,7 +56,7 @@ Timeline.propTypes = {
   pagePath: PropTypes.string.isRequired,
   range: PropTypes.shape({
     start: PropTypes.instanceOf(Date).isRequired,
-    end: PropTypes.instanceOf(Date).isRequired,
+    end: PropTypes.instanceOf(Date).isRequired
   }).isRequired
 };
 

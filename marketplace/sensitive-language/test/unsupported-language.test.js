@@ -14,9 +14,7 @@ jest.mock('@contentful/forma-36-react-components', () => ({
 
 const {UnsupportedLanguage} = require('../src/unsupported-language.js');
 
-test('UnsupportedLanguage: renders correctly', function () {
-  const tree = renderer
-  .create(<UnsupportedLanguage localeCode="de-De" localeName="German" />)
-  .toJSON();
+test('UnsupportedLanguage: renders correctly', function() {
+  const tree = renderer.create(<UnsupportedLanguage localeCode="de-De" localeName="German" />).toJSON();
   expect(tree).toMatchSnapshot();
 });

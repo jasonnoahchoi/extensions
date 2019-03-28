@@ -14,9 +14,7 @@ jest.mock('@contentful/forma-36-react-components', () => ({
 
 const {NoIssues} = require('../src/no-issues.js');
 
-test('NoIssues: renders correctly', function () {
-  const tree = renderer
-  .create(<NoIssues/>)
-  .toJSON();
+test('NoIssues: renders correctly', function() {
+  const tree = renderer.create(<NoIssues />).toJSON();
   expect(tree).toMatchSnapshot();
 });

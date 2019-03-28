@@ -12,25 +12,21 @@ jest.mock('@contentful/forma-36-react-components', () => ({
 
 const {Message} = require('../src/message.js');
 
-test('Message: renders correctly', function () {
+test('Message: renders correctly', function() {
   const message = {
-    message: 'Don\'t do this',
+    message: "Don't do this",
     ruleId: 'simon-says'
   };
-  const tree = renderer
-    .create(<Message message={message} />)
-    .toJSON();
+  const tree = renderer.create(<Message message={message} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-test('Message: shows optional note', function () {
+test('Message: shows optional note', function() {
   const message = {
-    message: 'Don\'t do this',
+    message: "Don't do this",
     ruleId: 'simon-says',
-    note: 'you really shouldn\'t'
+    note: "you really shouldn't"
   };
-  const tree = renderer
-    .create(<Message message={message} />)
-    .toJSON();
+  const tree = renderer.create(<Message message={message} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
