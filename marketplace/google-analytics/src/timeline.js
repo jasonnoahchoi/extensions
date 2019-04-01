@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {formatDate} from './utils.js';
+import { formatDate } from './utils.js';
 
 class Timeline extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class Timeline extends React.Component {
     });
   }
   render() {
-    const {range, dimension, pagePath, viewId} = this.props;
+    const { range, dimension, pagePath, viewId } = this.props;
     if (this.state.timeline) {
       this.state.timeline
         .set({
@@ -60,4 +60,4 @@ Timeline.propTypes = {
   }).isRequired
 };
 
-export {Timeline};
+export { Timeline };

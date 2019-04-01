@@ -3,14 +3,14 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
 
-const {mockComponent} = require('./mock-component.js');
+const { mockComponent } = require('./mock-component.js');
 
 jest.mock('@contentful/forma-36-react-components', () => ({
   Icon: mockComponent('icon'),
   Paragraph: mockComponent('paragraph')
 }));
 
-const {Message} = require('../src/message.js');
+const { Message } = require('../src/message.js');
 
 test('Message: renders correctly', function() {
   const message = {

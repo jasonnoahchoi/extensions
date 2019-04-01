@@ -2,13 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Icon, Paragraph} from '@contentful/forma-36-react-components';
+import { Icon, Paragraph } from '@contentful/forma-36-react-components';
 
-export function Message({message}) {
+export function Message({ message }) {
   return (
     <li className="warning-list__item">
       <Icon icon="Close" color="negative" extraClassNames="f36-margin-right--2xs" />
-      <Paragraph title={`Flagged by rule ID "${message.ruleId}". ${message.note ? message.note : ''}`}>
+      <Paragraph
+        title={`Flagged by rule ID "${message.ruleId}". ${message.note ? message.note : ''}`}>
         {message.message}
       </Paragraph>
     </li>

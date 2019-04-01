@@ -3,7 +3,7 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
 
-const {mockComponent} = require('./mock-component.js');
+const { mockComponent } = require('./mock-component.js');
 
 jest.mock('@contentful/forma-36-react-components', () => ({
   Icon: mockComponent('icon'),
@@ -12,7 +12,7 @@ jest.mock('@contentful/forma-36-react-components', () => ({
   Paragraph: mockComponent('paragraph')
 }));
 
-const {NoIssues} = require('../src/no-issues.js');
+const { NoIssues } = require('../src/no-issues.js');
 
 test('NoIssues: renders correctly', function() {
   const tree = renderer.create(<NoIssues />).toJSON();

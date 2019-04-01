@@ -7,7 +7,7 @@ const NetlifyAPI = require('netlify');
 const ora = require('ora');
 const logSymbols = require('log-symbols');
 
-const {dirs} = require('./utils.js');
+const { dirs } = require('./utils.js');
 
 const BUILD_DIR = path.join(__dirname, '..', 'dist');
 const client = new NetlifyAPI(process.env.NETLIFY_TOKEN);
@@ -17,7 +17,7 @@ function createOrUpdate(extensionName) {
   const customDomain = `${extensionName}.contentfulexts.com`;
 
   return client
-    .getSite({site_id: customDomain})
+    .getSite({ site_id: customDomain })
     .then(
       site => {
         console.log('\nUpdating existing site', siteName);
@@ -74,7 +74,7 @@ function deployProgressCb() {
       default: {
         const spinner = events[ev.type];
         if (spinner) {
-          spinner.stopAndPersist({text: ev.msg, symbol: logSymbols.success});
+          spinner.stopAndPersist({ text: ev.msg, symbol: logSymbols.success });
           delete events[ev.type];
         }
         return;

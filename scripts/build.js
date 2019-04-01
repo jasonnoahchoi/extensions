@@ -1,11 +1,11 @@
 'use strict';
 
-const {readFile, writeFile, rename} = require('fs').promises;
+const { readFile, writeFile, rename } = require('fs').promises;
 const path = require('path');
 const makeDir = require('make-dir');
 const cpy = require('cpy');
 
-const {dirs} = require('./utils.js');
+const { dirs } = require('./utils.js');
 
 const BASE_DIR = path.join(__dirname, '..', 'marketplace');
 const BUILD_DIR = path.join(__dirname, '..', 'dist');

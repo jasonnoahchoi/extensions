@@ -2,15 +2,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Icon, Typography, Subheading, SectionHeading, Paragraph} from '@contentful/forma-36-react-components';
-import {documentToPlainTextString} from '@contentful/rich-text-plain-text-renderer';
+import {
+  Icon,
+  Typography,
+  Subheading,
+  SectionHeading,
+  Paragraph
+} from '@contentful/forma-36-react-components';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import alex from 'alex';
 
-import {NoIssues} from './no-issues.js';
-import {Message} from './message.js';
+import { NoIssues } from './no-issues.js';
+import { Message } from './message.js';
 
 function checkContent(isRichText, value) {
-  const {messages} = isRichText ? alex.text(documentToPlainTextString(value)) : alex.markdown(value);
+  const { messages } = isRichText
+    ? alex.text(documentToPlainTextString(value))
+    : alex.markdown(value);
 
   return messages;
 }
@@ -18,11 +26,11 @@ function checkContent(isRichText, value) {
 export class LanguageChecker extends React.Component {
   constructor() {
     super();
-    this.state = {messageMap: {}};
+    this.state = { messageMap: {} };
   }
 
   componentDidMount() {
-    const {entry, fieldsToCheck} = this.props;
+    const { entry, fieldsToCheck } = this.props;
 
     fieldsToCheck.forEach(fieldDefinition => {
       const fieldId = fieldDefinition.id;
@@ -38,7 +46,7 @@ export class LanguageChecker extends React.Component {
 
           messageMap[fieldId] = messages;
 
-          return {messageMap};
+          return { messageMap };
         });
       }
 
@@ -50,7 +58,7 @@ export class LanguageChecker extends React.Component {
 
           messageMap[fieldId] = messages;
 
-          return {messageMap};
+          return { messageMap };
         });
       });
     });
@@ -58,7 +66,7 @@ export class LanguageChecker extends React.Component {
 
   render() {
     const messageEntries = Object.entries(this.state.messageMap);
-    const {fieldsToCheck} = this.props;
+    const { fieldsToCheck } = this.props;
     let messageCount = 0;
 
     messageEntries.forEach(([, messages]) => {
@@ -72,7 +80,7 @@ export class LanguageChecker extends React.Component {
     return (
       <React.Fragment>
         <Typography>
-          <Subheading style={{display: 'flex', alignItems: 'center'}}>
+          <Subheading style={{ display: 'flex', alignItems: 'center' }}>
             <Icon icon="Warning" color="warning" extraClassNames="f36-margin-right--xs" />
             Issues found
           </Subheading>
@@ -83,11 +91,13 @@ export class LanguageChecker extends React.Component {
             return null;
           }
 
-          const fieldDefiniton = fieldsToCheck.find(({id}) => id === fieldId);
+          const fieldDefiniton = fieldsToCheck.find(({ id }) => id === fieldId);
 
           return (
             <div key={fieldId}>
-              <SectionHeading extraClassNames="f36-margin-bottom--m">{fieldDefiniton.name}</SectionHeading>
+              <SectionHeading extraClassNames="f36-margin-bottom--m">
+                {fieldDefiniton.name}
+              </SectionHeading>
 
               <ul className="warning-list f36-margin-bottom--m">
                 {messages.map((message, index) => (

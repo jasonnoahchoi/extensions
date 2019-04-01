@@ -3,7 +3,7 @@
 const React = require('react');
 const renderer = require('react-test-renderer');
 
-const {mockComponent} = require('./mock-component.js');
+const { mockComponent } = require('./mock-component.js');
 
 jest.mock('../src/unsupported-language.js', () => ({
   UnsupportedLanguage: mockComponent('unsupported-language')
@@ -12,7 +12,7 @@ jest.mock('../src/language-checker.js', () => ({
   LanguageChecker: mockComponent('language-checker')
 }));
 
-const {App} = require('../src/app.js');
+const { App } = require('../src/app.js');
 
 test('App: bails out for non-english languages', function() {
   const extension = {

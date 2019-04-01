@@ -1,6 +1,6 @@
 'use strict';
 
-const {readdir, stat} = require('fs').promises;
+const { readdir, stat } = require('fs').promises;
 const path = require('path');
 
 async function dirs(directory) {
@@ -13,4 +13,4 @@ async function dirs(directory) {
   return dirs;
 }
 
-module.exports = {dirs};
+module.exports = { dirs };
