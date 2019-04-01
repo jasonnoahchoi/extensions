@@ -17,7 +17,7 @@ const CLIENT_ID = '318721834234-s3td95ohvub1bkksn3aicimnltvmtts8.apps.googleuser
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const { auth, parameters, entry } = props;
+    const { parameters, entry } = props;
     const { prefix, slugId } = parameters;
     const hasSlug = slugId in entry.fields;
 
@@ -34,6 +34,10 @@ class App extends React.Component {
       dimension: 'date',
       pagePath
     };
+  }
+
+  componentDidMount() {
+    const { auth } = this.props;
     auth.on('signIn', () => this.setState({ isAuthorized: true }));
     auth.on('signOut', () => this.setState({ isAuthorized: false }));
     auth.authorize({
