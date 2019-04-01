@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from '@contentful/forma-36-react-components';
 
 import { Timeline } from './timeline.js';
 import { formatDate } from './utils.js';
@@ -117,16 +118,7 @@ class App extends React.Component {
           viewId={parameters.viewId}
         />
         <div className="info">
-          <svg
-            fill="#2D2F31"
-            width="100pt"
-            height="100pt"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 9.617c22.27 0 40.383 18.117 40.383 40.383 0 22.27-18.117 40.383-40.383 40.383C27.73 90.383 9.617 72.27 9.617 50S27.73 9.617 50 9.617m0-7.695C23.461 1.922 1.922 23.46 1.922 50S23.461 98.078 50 98.078 98.078 76.538 98.078 50 76.539 1.922 50 1.922z" />
-            <path d="M54.617 74.039h-9.234v-26.73h9.234zM57.117 31.27c0 3.93-3.188 7.113-7.117 7.113a7.116 7.116 0 1 1 0-14.23 7.119 7.119 0 0 1 7.117 7.117" />
-          </svg>
-          {pagePath}
+          <Icon icon="InfoCircle" /> {pagePath}
         </div>
         <div className="signout">
           <button type="button" onClick={() => auth.signOut()}>
